@@ -9,8 +9,8 @@ import Foundation
 import DocumentReader
 
 final class DocumentReaderService {
-    let kiPassLicenseFile = "iPass.license"
-    let kiPassaDatabaseId = "Full"
+    let kRegulaLicenseFile = "iPass.license"
+    let kRegulaDatabaseId = "Full"
     
     enum State {
         case downloadingDatabase(progress: Double)
@@ -29,7 +29,7 @@ final class DocumentReaderService {
     
     func initializeDatabaseAndAPI(progress: @escaping (State) -> Void) {
         
-        guard let licensePath = Bundle(for: type(of: self)).path(forResource: kiPassLicenseFile, ofType: nil) else {
+        guard let licensePath = Bundle(for: type(of: self)).path(forResource: kRegulaLicenseFile, ofType: nil) else {
             progress(.error("Missing License File in Framework Bundle"))
             return
         }
@@ -41,7 +41,7 @@ final class DocumentReaderService {
 
         DispatchQueue.global().async {
             DocReader.shared.prepareDatabase(
-                databaseID: self.kiPassaDatabaseId,
+                databaseID: self.kRegulaDatabaseId,
                 progressHandler: { (inprogress) in
                     progress(.downloadingDatabase(progress: inprogress.fractionCompleted))
                 },

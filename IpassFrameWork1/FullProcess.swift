@@ -9,6 +9,7 @@ import Foundation
 import DocumentReader
 import UIKit
 
+
 public class StartFullProcess {
     public init() {}
  
@@ -723,8 +724,8 @@ public class StartFullProcess {
     }
     
     public static func sendDecryptionRequest(_ jsonData: Data, _ completion: ((DocumentReaderResults?) -> (Void))? ) {
-        guard let url = URL(string: "") else { return }
-
+        guard let url = URL(string: "https://api.regulaforensics.com/api/process") else { return }
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = jsonData

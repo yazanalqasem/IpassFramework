@@ -3,7 +3,7 @@
 //  DocumentReader-Swift
 //
 //  Created by Pavel Kondrashkov on 23/03/2022.
-//  Copyright © 2022 iPass. All rights reserved.
+//  Copyright © 2022 Regula. All rights reserved.
 //
 
 import UIKit
@@ -147,6 +147,9 @@ final class OnlineProcessingViewController: UIViewController {
             return
         }
 
+        // For more information please visit
+        // https://github.com/regulaforensics/DocumentReader-web-openapi/blob/master/p-process.yml
+     
         guard let imageData = image.pngData() as? NSData else {
             let alert = UIAlertController(title: "Plase select a valid image.", message: nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
