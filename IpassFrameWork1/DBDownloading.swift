@@ -21,7 +21,7 @@ public class DataBaseDownloading{
                 progressValue = "Downloading database: \(progressString)%"
             case .initializingAPI:
                 status = "Start Now"
-                APIHandler.LoginAuthAPi()
+               // APIHandler.LoginAuthAPi()
             case .completed:
 //                DispatchQueue.main.async {
 //                StartFullProcess.fullProcessScanning(type: 0, controller: controller)

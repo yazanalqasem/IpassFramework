@@ -10,16 +10,17 @@ import Foundation
 
 public class APIHandler {
     
-    public static func LoginAuthAPi() {
-        guard let apiURL = URL(string: "https://plusapi.ipass-mena.com/api/v1/ipass/create/authenticate/login") else { return }
+    public static func LoginAuthAPi(email: String, password: String) -> String {
+        guard let apiURL = URL(string: "https://plusapi.ipass-mena.com/api/v1/ipass/create/authenticate/login") else { return  "URl error"}
 
+        var statusString = ""
         var request = URLRequest(url: apiURL)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let parameters: [String: Any] = [
-            "email": "ipassmobile@yopmail.com",
-            "password": "Admin@123#"
+            "email": email,
+            "password": password
         ]
         print("loginPostApi",apiURL)
         print("login parameters",parameters)
@@ -27,7 +28,7 @@ public class APIHandler {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         } catch let error {
             print("Error serializing parameters: \(error.localizedDescription)")
-            return
+            return error.localizedDescription
         }
 
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -46,24 +47,30 @@ public class APIHandler {
                         if let user = json["user"] as? [String: Any] {
                             if let email = user["email"] as? String, let token = user["token"] as? String {
                                 UserLocalStore.shared.token = token
+                                statusString = "userToken : \(token)"
                             } else {
-                                print("Email or token not found in user dictionary")
+                                statusString = "Email or token not found in user dictionary"
                             }
                         } else {
-                            print("User dictionary not found or is not of type [String: Any]")
+                            statusString = "User dictionary not found or is not of type [String: Any]"
                         }
                     } else {
+                        statusString = "Failed to parse JSON response"
                         print("Failed to parse JSON response")
                     }
                 } catch let error {
-                    print("Error parsing JSON response: \(error.localizedDescription)")
+                    statusString = "Error parsing JSON response: \(error.localizedDescription)"
                 }
             } else {
-                print("Unexpected status code: \(status)")
+                statusString = "Unexpected status code: \(status)"
             }
+            
         }
-
         task.resume()
+        
+        print("statusString : ", statusString)
+        return statusString
+        
     }
 
 
