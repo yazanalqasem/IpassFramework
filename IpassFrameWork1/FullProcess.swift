@@ -172,9 +172,9 @@ public class StartFullProcess {
             "email": "ipassmobile@yopmail.com",
             "regulaDat": jsondata ?? "",
             "livenessdata": dict,
-            "randomid": random,
-            "userToken" : userToken,
-            "appToken" : appToken
+            "randomid": random
+            //"userToken" : userToken,
+            //"appToken" : appToken
         ]
         
         print("apiURL : ",apiURL)
