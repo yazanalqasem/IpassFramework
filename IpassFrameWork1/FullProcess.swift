@@ -162,8 +162,8 @@ public class StartFullProcess {
     
     private static func saveDataPostApi(random:String,results:DocumentReaderResults, userToken:String, appToken:String,  completion: @escaping (String?, Error?) -> Void){
         guard let apiURL = URL(string: "https://ipassplus.csdevhub.com/api/v1/ipass/sdk/data/save") else { return }
-       let jsondata = convertStringToJSON(results.rawResult)
-        
+        let jsondata = convertStringToDictionary(text: results.rawResult)
+        print("jsondata : ",apiURL)
         var request = URLRequest(url: apiURL)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -233,6 +233,17 @@ public class StartFullProcess {
         }
     }
 
+    private static func convertStringToDictionary(text: String) -> [String:String]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:String]
+                return json
+            } catch {
+                print("Something went wrong")
+            }
+        }
+        return nil
+    }
     
     lazy var onlineProcessing: CustomizationItem = {
         let item = CustomizationItem("Online Processing") { [weak self] in
