@@ -3,7 +3,7 @@
 //  DocumentReader-Swift
 //
 //  Created by Pavel Kondrashkov on 9/13/21.
-//  Copyright © 2021 Regula. All rights reserved.
+//  Copyright © 2021 iPass. All rights reserved.
 //
 
 import Foundation
