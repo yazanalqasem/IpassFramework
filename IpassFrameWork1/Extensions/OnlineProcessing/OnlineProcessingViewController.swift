@@ -171,44 +171,44 @@ final class OnlineProcessingViewController: UIViewController {
             ]
         ]
 
-//        var request = URLRequest(url: URL(string: "")!)
-//        request.httpMethod = "POST"
-//        request.httpBody = try? JSONSerialization.data(withJSONObject: jsonContent, options: [])
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//        self.view.isUserInteractionEnabled = false
-//        self.loaderView.startAnimating()
-//        session.dataTask(with: request) { data, response, error in
-//            DispatchQueue.main.async {
-//                self.view.isUserInteractionEnabled = true
-//                self.loaderView.stopAnimating()
-//
-//                if let error = error {
-//                    let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
-//                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//                    self.present(alert, animated: true, completion: nil)
-//                    return
-//                }
-//
-//                guard
-//                    let data = data,
-//                    let _ = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-//                    let rawJSON = String(data: data, encoding: .utf8)
-//                else {
-//                    if let data = data {
-//                        print("Received invalid data: \(String(data: data, encoding: .utf8)!)")
-//                    }
-//
-//                    let alert = UIAlertController(title: "Failed to parse JSON.", message: nil, preferredStyle: .alert)
-//                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//                    self.present(alert, animated: true, completion: nil)
-//                    return
-//                }
-//
-//                let results = DocumentReaderResults(rawJSON: rawJSON)
-//                self.presentResults(results)
-//            }
-//        }.resume()
+        var request = URLRequest(url: URL(string: "https://api.regulaforensics.com/api/process")!)
+        request.httpMethod = "POST"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: jsonContent, options: [])
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        self.view.isUserInteractionEnabled = false
+        self.loaderView.startAnimating()
+        session.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async {
+                self.view.isUserInteractionEnabled = true
+                self.loaderView.stopAnimating()
+
+                if let error = error {
+                    let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+
+                guard
+                    let data = data,
+                    let _ = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                    let rawJSON = String(data: data, encoding: .utf8)
+                else {
+                    if let data = data {
+                        print("Received invalid data: \(String(data: data, encoding: .utf8)!)")
+                    }
+
+                    let alert = UIAlertController(title: "Failed to parse JSON.", message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+
+                let results = DocumentReaderResults(rawJSON: rawJSON)
+                self.presentResults(results)
+            }
+        }.resume()
     }
 
     @objc private func handleImageViewPress() {

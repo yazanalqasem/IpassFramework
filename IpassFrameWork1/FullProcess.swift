@@ -723,26 +723,26 @@ public class StartFullProcess {
     }
     
     public static func sendDecryptionRequest(_ jsonData: Data, _ completion: ((DocumentReaderResults?) -> (Void))? ) {
-//        guard let url = URL(string: "") else { return }
-//
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "POST"
-//        request.httpBody = jsonData
-//        request.addValue("application/json", forHTTPHeaderField: "Accept")
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//        
-//        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-//            guard let jsonData = data else {
-//                completion?(nil)
-//                return
-//            }
-//            
-//            let decryptedResult = String(data: jsonData, encoding: .utf8)
-//                .flatMap { DocumentReaderResults.initWithRawString($0) }
-//            completion?(decryptedResult)
-//        })
-//
-//        task.resume()
+        guard let url = URL(string: "") else { return }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            guard let jsonData = data else {
+                completion?(nil)
+                return
+            }
+            
+            let decryptedResult = String(data: jsonData, encoding: .utf8)
+                .flatMap { DocumentReaderResults.initWithRawString($0) }
+            completion?(decryptedResult)
+        })
+
+        task.resume()
     }
     
     
