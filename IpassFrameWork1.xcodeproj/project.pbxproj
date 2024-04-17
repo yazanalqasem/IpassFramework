@@ -17,22 +17,22 @@
 		75E326252BC69D38001375E4 /* FullProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E326242BC69D38001375E4 /* FullProcess.swift */; };
 		75E326272BC69F28001375E4 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E326262BC69F28001375E4 /* Types.swift */; };
 		75E3267B2BC6A429001375E4 /* ApplicationSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E3267A2BC6A429001375E4 /* ApplicationSetting.swift */; };
-		75E326A82BC6B945001375E4 /* OnlineProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E326992BC6B945001375E4 /* OnlineProcessingViewController.swift */; };
-		75E326A92BC6B945001375E4 /* AVCaptureDevicePosition+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E3269B2BC6B945001375E4 /* AVCaptureDevicePosition+Extensions.swift */; };
-		75E326AA2BC6B945001375E4 /* BarcodeTypes+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E3269C2BC6B945001375E4 /* BarcodeTypes+Extensions.swift */; };
-		75E326AB2BC6B945001375E4 /* CaptureMode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E3269D2BC6B945001375E4 /* CaptureMode+Extensions.swift */; };
-		75E326AC2BC6B945001375E4 /* DocFormat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E3269E2BC6B945001375E4 /* DocFormat+Extensions.swift */; };
-		75E326AD2BC6B945001375E4 /* DocReaderFrame+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E3269F2BC6B945001375E4 /* DocReaderFrame+Extensions.swift */; };
-		75E326AE2BC6B945001375E4 /* FieldType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E326A02BC6B945001375E4 /* FieldType+Extensions.swift */; };
-		75E326AF2BC6B945001375E4 /* LCID+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E326A12BC6B945001375E4 /* LCID+Extensions.swift */; };
-		75E326B02BC6B945001375E4 /* MeasureSystem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E326A22BC6B945001375E4 /* MeasureSystem+Extensions.swift */; };
-		75E326B12BC6B945001375E4 /* MRZFormat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E326A32BC6B945001375E4 /* MRZFormat+Extensions.swift */; };
-		75E326B22BC6B945001375E4 /* NSObject+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E326A42BC6B945001375E4 /* NSObject+ClassName.swift */; };
-		75E326B32BC6B945001375E4 /* ResultType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E326A52BC6B945001375E4 /* ResultType+Extensions.swift */; };
-		75E326B42BC6B945001375E4 /* RFIDAccessControlProcedureType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E326A62BC6B945001375E4 /* RFIDAccessControlProcedureType+Extensions.swift */; };
 		75E326D22BC6C4D6001375E4 /* ApiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E326D12BC6C4D6001375E4 /* ApiHandler.swift */; };
 		75E3270C2BC7E68D001375E4 /* UserlocalStoreClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E3270B2BC7E68D001375E4 /* UserlocalStoreClass.swift */; };
 		75E327402BC97B74001375E4 /* iPass.license in Resources */ = {isa = PBXBuildFile; fileRef = 75E3273F2BC97B73001375E4 /* iPass.license */; };
+		C9B8AA422BD00C1B00531F8C /* OnlineProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8AA412BD00C1B00531F8C /* OnlineProcessingViewController.swift */; };
+		C9B8AA4F2BD00C2200531F8C /* NSObject+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8AA432BD00C2100531F8C /* NSObject+ClassName.swift */; };
+		C9B8AA502BD00C2200531F8C /* MRZFormat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8AA442BD00C2100531F8C /* MRZFormat+Extensions.swift */; };
+		C9B8AA512BD00C2200531F8C /* ResultType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8AA452BD00C2100531F8C /* ResultType+Extensions.swift */; };
+		C9B8AA522BD00C2200531F8C /* RFIDAccessControlProcedureType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8AA462BD00C2100531F8C /* RFIDAccessControlProcedureType+Extensions.swift */; };
+		C9B8AA532BD00C2200531F8C /* FieldType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8AA472BD00C2100531F8C /* FieldType+Extensions.swift */; };
+		C9B8AA542BD00C2200531F8C /* DocReaderFrame+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8AA482BD00C2100531F8C /* DocReaderFrame+Extensions.swift */; };
+		C9B8AA552BD00C2200531F8C /* BarcodeTypes+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8AA492BD00C2200531F8C /* BarcodeTypes+Extensions.swift */; };
+		C9B8AA562BD00C2200531F8C /* CaptureMode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8AA4A2BD00C2200531F8C /* CaptureMode+Extensions.swift */; };
+		C9B8AA572BD00C2200531F8C /* DocFormat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8AA4B2BD00C2200531F8C /* DocFormat+Extensions.swift */; };
+		C9B8AA582BD00C2200531F8C /* LCID+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8AA4C2BD00C2200531F8C /* LCID+Extensions.swift */; };
+		C9B8AA592BD00C2200531F8C /* MeasureSystem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8AA4D2BD00C2200531F8C /* MeasureSystem+Extensions.swift */; };
+		C9B8AA5A2BD00C2200531F8C /* AVCaptureDevicePosition+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8AA4E2BD00C2200531F8C /* AVCaptureDevicePosition+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,25 +46,25 @@
 		75E326242BC69D38001375E4 /* FullProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProcess.swift; sourceTree = "<group>"; };
 		75E326262BC69F28001375E4 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		75E3267A2BC6A429001375E4 /* ApplicationSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSetting.swift; sourceTree = "<group>"; };
-		75E326992BC6B945001375E4 /* OnlineProcessingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineProcessingViewController.swift; sourceTree = "<group>"; };
-		75E3269B2BC6B945001375E4 /* AVCaptureDevicePosition+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVCaptureDevicePosition+Extensions.swift"; sourceTree = "<group>"; };
-		75E3269C2BC6B945001375E4 /* BarcodeTypes+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BarcodeTypes+Extensions.swift"; sourceTree = "<group>"; };
-		75E3269D2BC6B945001375E4 /* CaptureMode+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CaptureMode+Extensions.swift"; sourceTree = "<group>"; };
-		75E3269E2BC6B945001375E4 /* DocFormat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DocFormat+Extensions.swift"; sourceTree = "<group>"; };
-		75E3269F2BC6B945001375E4 /* DocReaderFrame+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DocReaderFrame+Extensions.swift"; sourceTree = "<group>"; };
-		75E326A02BC6B945001375E4 /* FieldType+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FieldType+Extensions.swift"; sourceTree = "<group>"; };
-		75E326A12BC6B945001375E4 /* LCID+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LCID+Extensions.swift"; sourceTree = "<group>"; };
-		75E326A22BC6B945001375E4 /* MeasureSystem+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MeasureSystem+Extensions.swift"; sourceTree = "<group>"; };
-		75E326A32BC6B945001375E4 /* MRZFormat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MRZFormat+Extensions.swift"; sourceTree = "<group>"; };
-		75E326A42BC6B945001375E4 /* NSObject+ClassName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
-		75E326A52BC6B945001375E4 /* ResultType+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ResultType+Extensions.swift"; sourceTree = "<group>"; };
-		75E326A62BC6B945001375E4 /* RFIDAccessControlProcedureType+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RFIDAccessControlProcedureType+Extensions.swift"; sourceTree = "<group>"; };
 		75E326D12BC6C4D6001375E4 /* ApiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHandler.swift; sourceTree = "<group>"; };
 		75E3270B2BC7E68D001375E4 /* UserlocalStoreClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserlocalStoreClass.swift; sourceTree = "<group>"; };
 		75E3273F2BC97B73001375E4 /* iPass.license */ = {isa = PBXFileReference; lastKnownFileType = file; path = iPass.license; sourceTree = "<group>"; };
 		77A15FA850B860DBA2E81B44 /* Pods_IpassFrameWork1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IpassFrameWork1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91A120A78EAD50B17D670E6D /* Pods-IpassFrameWork1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IpassFrameWork1.release.xcconfig"; path = "Target Support Files/Pods-IpassFrameWork1/Pods-IpassFrameWork1.release.xcconfig"; sourceTree = "<group>"; };
 		A6777EB556EC8054F1697E64 /* Pods-IpassFrameWork1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IpassFrameWork1.debug.xcconfig"; path = "Target Support Files/Pods-IpassFrameWork1/Pods-IpassFrameWork1.debug.xcconfig"; sourceTree = "<group>"; };
+		C9B8AA412BD00C1B00531F8C /* OnlineProcessingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineProcessingViewController.swift; sourceTree = "<group>"; };
+		C9B8AA432BD00C2100531F8C /* NSObject+ClassName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
+		C9B8AA442BD00C2100531F8C /* MRZFormat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MRZFormat+Extensions.swift"; sourceTree = "<group>"; };
+		C9B8AA452BD00C2100531F8C /* ResultType+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ResultType+Extensions.swift"; sourceTree = "<group>"; };
+		C9B8AA462BD00C2100531F8C /* RFIDAccessControlProcedureType+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RFIDAccessControlProcedureType+Extensions.swift"; sourceTree = "<group>"; };
+		C9B8AA472BD00C2100531F8C /* FieldType+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FieldType+Extensions.swift"; sourceTree = "<group>"; };
+		C9B8AA482BD00C2100531F8C /* DocReaderFrame+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DocReaderFrame+Extensions.swift"; sourceTree = "<group>"; };
+		C9B8AA492BD00C2200531F8C /* BarcodeTypes+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BarcodeTypes+Extensions.swift"; sourceTree = "<group>"; };
+		C9B8AA4A2BD00C2200531F8C /* CaptureMode+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CaptureMode+Extensions.swift"; sourceTree = "<group>"; };
+		C9B8AA4B2BD00C2200531F8C /* DocFormat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DocFormat+Extensions.swift"; sourceTree = "<group>"; };
+		C9B8AA4C2BD00C2200531F8C /* LCID+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LCID+Extensions.swift"; sourceTree = "<group>"; };
+		C9B8AA4D2BD00C2200531F8C /* MeasureSystem+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MeasureSystem+Extensions.swift"; sourceTree = "<group>"; };
+		C9B8AA4E2BD00C2200531F8C /* AVCaptureDevicePosition+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVCaptureDevicePosition+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +100,8 @@
 		75E325D92BC67128001375E4 /* IpassFrameWork1 */ = {
 			isa = PBXGroup;
 			children = (
+				C9B8AA3F2BD00C0700531F8C /* Extensions */,
 				75E3273F2BC97B73001375E4 /* iPass.license */,
-				75E326A72BC6B945001375E4 /* Extensions */,
 				75E326262BC69F28001375E4 /* Types.swift */,
 				75E326062BC67937001375E4 /* Certificates.bundle */,
 				75E326082BC67937001375E4 /* CertificatesPA.bundle */,
@@ -117,41 +117,40 @@
 			path = IpassFrameWork1;
 			sourceTree = "<group>";
 		};
-		75E3269A2BC6B945001375E4 /* OnlineProcessing */ = {
-			isa = PBXGroup;
-			children = (
-				75E326992BC6B945001375E4 /* OnlineProcessingViewController.swift */,
-			);
-			path = OnlineProcessing;
-			sourceTree = "<group>";
-		};
-		75E326A72BC6B945001375E4 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				75E3269A2BC6B945001375E4 /* OnlineProcessing */,
-				75E3269B2BC6B945001375E4 /* AVCaptureDevicePosition+Extensions.swift */,
-				75E3269C2BC6B945001375E4 /* BarcodeTypes+Extensions.swift */,
-				75E3269D2BC6B945001375E4 /* CaptureMode+Extensions.swift */,
-				75E3269E2BC6B945001375E4 /* DocFormat+Extensions.swift */,
-				75E3269F2BC6B945001375E4 /* DocReaderFrame+Extensions.swift */,
-				75E326A02BC6B945001375E4 /* FieldType+Extensions.swift */,
-				75E326A12BC6B945001375E4 /* LCID+Extensions.swift */,
-				75E326A22BC6B945001375E4 /* MeasureSystem+Extensions.swift */,
-				75E326A32BC6B945001375E4 /* MRZFormat+Extensions.swift */,
-				75E326A42BC6B945001375E4 /* NSObject+ClassName.swift */,
-				75E326A52BC6B945001375E4 /* ResultType+Extensions.swift */,
-				75E326A62BC6B945001375E4 /* RFIDAccessControlProcedureType+Extensions.swift */,
-			);
-			name = Extensions;
-			path = ../../../Downloads/Extensions;
-			sourceTree = "<group>";
-		};
 		A6394A8E2C65AB16BB8175E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				77A15FA850B860DBA2E81B44 /* Pods_IpassFrameWork1.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9B8AA3F2BD00C0700531F8C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C9B8AA4E2BD00C2200531F8C /* AVCaptureDevicePosition+Extensions.swift */,
+				C9B8AA492BD00C2200531F8C /* BarcodeTypes+Extensions.swift */,
+				C9B8AA4A2BD00C2200531F8C /* CaptureMode+Extensions.swift */,
+				C9B8AA4B2BD00C2200531F8C /* DocFormat+Extensions.swift */,
+				C9B8AA482BD00C2100531F8C /* DocReaderFrame+Extensions.swift */,
+				C9B8AA472BD00C2100531F8C /* FieldType+Extensions.swift */,
+				C9B8AA4C2BD00C2200531F8C /* LCID+Extensions.swift */,
+				C9B8AA4D2BD00C2200531F8C /* MeasureSystem+Extensions.swift */,
+				C9B8AA442BD00C2100531F8C /* MRZFormat+Extensions.swift */,
+				C9B8AA432BD00C2100531F8C /* NSObject+ClassName.swift */,
+				C9B8AA452BD00C2100531F8C /* ResultType+Extensions.swift */,
+				C9B8AA462BD00C2100531F8C /* RFIDAccessControlProcedureType+Extensions.swift */,
+				C9B8AA402BD00C1200531F8C /* OnlineProcessing */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C9B8AA402BD00C1200531F8C /* OnlineProcessing */ = {
+			isa = PBXGroup;
+			children = (
+				C9B8AA412BD00C1B00531F8C /* OnlineProcessingViewController.swift */,
+			);
+			path = OnlineProcessing;
 			sourceTree = "<group>";
 		};
 		ED611FD5D4A46115F7B46BA3 /* Pods */ = {
@@ -277,26 +276,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75E326AA2BC6B945001375E4 /* BarcodeTypes+Extensions.swift in Sources */,
-				75E326B32BC6B945001375E4 /* ResultType+Extensions.swift in Sources */,
-				75E326B42BC6B945001375E4 /* RFIDAccessControlProcedureType+Extensions.swift in Sources */,
-				75E326A82BC6B945001375E4 /* OnlineProcessingViewController.swift in Sources */,
+				C9B8AA422BD00C1B00531F8C /* OnlineProcessingViewController.swift in Sources */,
+				C9B8AA582BD00C2200531F8C /* LCID+Extensions.swift in Sources */,
 				75E3267B2BC6A429001375E4 /* ApplicationSetting.swift in Sources */,
+				C9B8AA502BD00C2200531F8C /* MRZFormat+Extensions.swift in Sources */,
 				75E326252BC69D38001375E4 /* FullProcess.swift in Sources */,
+				C9B8AA572BD00C2200531F8C /* DocFormat+Extensions.swift in Sources */,
+				C9B8AA552BD00C2200531F8C /* BarcodeTypes+Extensions.swift in Sources */,
 				75E325E22BC67169001375E4 /* DBDownloading.swift in Sources */,
-				75E326AD2BC6B945001375E4 /* DocReaderFrame+Extensions.swift in Sources */,
-				75E326AC2BC6B945001375E4 /* DocFormat+Extensions.swift in Sources */,
 				75E3270C2BC7E68D001375E4 /* UserlocalStoreClass.swift in Sources */,
-				75E326B12BC6B945001375E4 /* MRZFormat+Extensions.swift in Sources */,
-				75E326AF2BC6B945001375E4 /* LCID+Extensions.swift in Sources */,
 				75E326042BC678B5001375E4 /* DBService.swift in Sources */,
-				75E326A92BC6B945001375E4 /* AVCaptureDevicePosition+Extensions.swift in Sources */,
-				75E326AB2BC6B945001375E4 /* CaptureMode+Extensions.swift in Sources */,
-				75E326AE2BC6B945001375E4 /* FieldType+Extensions.swift in Sources */,
-				75E326B22BC6B945001375E4 /* NSObject+ClassName.swift in Sources */,
+				C9B8AA542BD00C2200531F8C /* DocReaderFrame+Extensions.swift in Sources */,
 				75E326272BC69F28001375E4 /* Types.swift in Sources */,
+				C9B8AA522BD00C2200531F8C /* RFIDAccessControlProcedureType+Extensions.swift in Sources */,
+				C9B8AA562BD00C2200531F8C /* CaptureMode+Extensions.swift in Sources */,
+				C9B8AA5A2BD00C2200531F8C /* AVCaptureDevicePosition+Extensions.swift in Sources */,
+				C9B8AA592BD00C2200531F8C /* MeasureSystem+Extensions.swift in Sources */,
+				C9B8AA4F2BD00C2200531F8C /* NSObject+ClassName.swift in Sources */,
+				C9B8AA532BD00C2200531F8C /* FieldType+Extensions.swift in Sources */,
 				75E326D22BC6C4D6001375E4 /* ApiHandler.swift in Sources */,
-				75E326B02BC6B945001375E4 /* MeasureSystem+Extensions.swift in Sources */,
+				C9B8AA512BD00C2200531F8C /* ResultType+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +307,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -374,6 +374,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

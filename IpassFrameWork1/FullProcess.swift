@@ -9,7 +9,6 @@ import Foundation
 import DocumentReader
 import UIKit
 
-
 public class StartFullProcess {
     public init() {}
  
@@ -170,7 +169,7 @@ public class StartFullProcess {
         let dict:[String:Any] = [:]
         let parameters: [String: Any] = [
             "email": "ipassmobile@yopmail.com",
-            "regulaDat": jsondata ?? "",
+            "idvData": jsondata ?? "",
             "livenessdata": dict,
             "randomid": random,
             "userToken" : userToken,
@@ -724,26 +723,26 @@ public class StartFullProcess {
     }
     
     public static func sendDecryptionRequest(_ jsonData: Data, _ completion: ((DocumentReaderResults?) -> (Void))? ) {
-        guard let url = URL(string: "https://api.regulaforensics.com/api/process") else { return }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = jsonData
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-            guard let jsonData = data else {
-                completion?(nil)
-                return
-            }
-            
-            let decryptedResult = String(data: jsonData, encoding: .utf8)
-                .flatMap { DocumentReaderResults.initWithRawString($0) }
-            completion?(decryptedResult)
-        })
-
-        task.resume()
+//        guard let url = URL(string: "") else { return }
+//
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "POST"
+//        request.httpBody = jsonData
+//        request.addValue("application/json", forHTTPHeaderField: "Accept")
+//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//        
+//        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+//            guard let jsonData = data else {
+//                completion?(nil)
+//                return
+//            }
+//            
+//            let decryptedResult = String(data: jsonData, encoding: .utf8)
+//                .flatMap { DocumentReaderResults.initWithRawString($0) }
+//            completion?(decryptedResult)
+//        })
+//
+//        task.resume()
     }
     
     
