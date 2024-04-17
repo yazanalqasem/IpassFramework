@@ -18,7 +18,7 @@ public class StartFullProcess {
     private var delegate:ScanningResultData?
     public var resultData:DocumentReaderResults?
     
-    public static func fullProcessScanning(type: Int, controller: UIViewController, completion: @escaping (String?, Error?) -> Void) {
+    public static func fullProcessScanning(type: Int, controller: UIViewController, userToken:String, appToken:String, completion: @escaping (String?, Error?) -> Void) {
 //        DocReader.shared.processParams.doublePageSpread = true
         DocReader.shared.processParams.multipageProcessing = true
         DocReader.shared.processParams.authenticityParams?.livenessParams?.checkHolo = false
@@ -54,7 +54,7 @@ public class StartFullProcess {
                                     return
                                 }
 //                                completion(results.rawResult, nil)
-                                getDocImages(datavalue: docResults ?? DocumentReaderResults(),completion: {(resuldata, error)in
+                                getDocImages(datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
                                     if let result = resuldata{
                                         completion(result, nil)
                                     }else{
@@ -66,7 +66,7 @@ public class StartFullProcess {
                                     return
                                 }
 //                                completion(results.rawResult, nil)
-                                getDocImages(datavalue: docResults ?? DocumentReaderResults(),completion: {(resuldata, error)in
+                                getDocImages(datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
                                     if let result = resuldata{
                                         completion(result, nil)
                                     }else{
@@ -85,7 +85,7 @@ public class StartFullProcess {
                         
                     } else {
 //                        completion(docResults?.rawResult, nil)
-                        getDocImages(datavalue: docResults ?? DocumentReaderResults(),completion: {(resuldata, error)in
+                        getDocImages(datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
                             if let result = resuldata{
                                 completion(result, nil)
                             }else{
@@ -119,29 +119,29 @@ public class StartFullProcess {
         return randomValue + randStr
     }
 
-    private static func getDocImages(datavalue: DocumentReaderResults, completion: @escaping (String?, Error?) -> Void) {
+    private static func getDocImages(datavalue: DocumentReaderResults, userToken:String, appToken:String, completion: @escaping (String?, Error?) -> Void) {
         
-        let dispatchGroup = DispatchGroup()
-        var ocrResult: String?
-        var saveResult: String?
-
-        var image1 = ""
-        var image2 = ""
-        
-        for i in (0 ..<  datavalue.graphicResult.fields.count) {
-            if(datavalue.graphicResult.fields[i].fieldName.lowercased() == "document image") {
-                if(image1 == "") {
-                    image1 = datavalue.graphicResult.fields[i].value.toBase64() ?? ""
-                }
-                else  if(image2 == "") {
-                    image2 = datavalue.graphicResult.fields[i].value.toBase64() ?? ""
-                }
-            }
-           }
+//        let dispatchGroup = DispatchGroup()
+//        var ocrResult: String?
+//        var saveResult: String?
+//
+//        var image1 = ""
+//        var image2 = ""
+//        
+//        for i in (0 ..<  datavalue.graphicResult.fields.count) {
+//            if(datavalue.graphicResult.fields[i].fieldName.lowercased() == "document image") {
+//                if(image1 == "") {
+//                    image1 = datavalue.graphicResult.fields[i].value.toBase64() ?? ""
+//                }
+//                else  if(image2 == "") {
+//                    image2 = datavalue.graphicResult.fields[i].value.toBase64() ?? ""
+//                }
+//            }
+//           }
         
         let randomNo = generateRandomTwoDigitNumber()
         
-        saveDataPostApi(random: randomNo, results: datavalue, completion: { (result, error) in
+        saveDataPostApi(random: randomNo, results: datavalue, userToken: userToken, appToken: appToken, completion: { (result, error) in
             if let result = result {
                 completion(result, nil)
             } else {
@@ -160,7 +160,7 @@ public class StartFullProcess {
 
 
     
-    private static func saveDataPostApi(random:String,results:DocumentReaderResults, completion: @escaping (String?, Error?) -> Void){
+    private static func saveDataPostApi(random:String,results:DocumentReaderResults, userToken:String, appToken:String,  completion: @escaping (String?, Error?) -> Void){
         guard let apiURL = URL(string: "https://plusapi.ipass-mena.com/api/v1/ipass/sdk/data/save") else { return }
        let jsondata = convertStringToJSON(results.rawResult)
         
@@ -172,11 +172,13 @@ public class StartFullProcess {
             "email": "ipassmobile@yopmail.com",
             "regulaDat": jsondata ?? "",
             "livenessdata": dict,
-            "randomid": random
+            "randomid": random,
+            //"userToken" : userToken,
+            //"appToken" : appToken
         ]
         
-        print("save data",apiURL)
-        print("save data",parameters)
+        print("apiURL : ",apiURL)
+        print("parameters : ",parameters)
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         } catch let error {
@@ -198,7 +200,6 @@ public class StartFullProcess {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                         print("Response save data Api-=-=",json)
                         completion("\(json)", nil)
-
                     } else {
                         print("Failed to parse JSON response")
                     }
