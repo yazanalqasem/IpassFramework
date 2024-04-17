@@ -173,8 +173,8 @@ public class StartFullProcess {
             "regulaDat": jsondata ?? "",
             "livenessdata": dict,
             "randomid": random,
-            //"userToken" : userToken,
-            //"appToken" : appToken
+            "userToken" : userToken,
+            "appToken" : appToken
         ]
         
         print("apiURL : ",apiURL)
