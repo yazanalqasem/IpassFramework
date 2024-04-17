@@ -161,7 +161,7 @@ public class StartFullProcess {
 
     
     private static func saveDataPostApi(random:String,results:DocumentReaderResults, completion: @escaping (String?, Error?) -> Void){
-        guard let apiURL = URL(string: "https://ipassplus.csdevhub.com/api/v1/ipass/sdk/data/save") else { return }
+        guard let apiURL = URL(string: "https://plusapi.ipass-mena.com/api/v1/ipass/sdk/data/save") else { return }
        let jsondata = convertStringToJSON(results.rawResult)
         
         var request = URLRequest(url: apiURL)
