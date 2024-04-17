@@ -41,7 +41,7 @@ public class StartFullProcess {
         }
         DocReader.shared.showScanner(presenter: controller, config: config) { [self] (action, docResults, error) in
             if action == .complete || action == .processTimeout {
-                 print(docResults?.rawResult as Any)
+//                 print(docResults?.rawResult as Any)
                 
     
                     if docResults?.chipPage != 0  {
@@ -177,8 +177,8 @@ public class StartFullProcess {
             "appToken" : appToken
         ]
         
-        print("apiURL : ",apiURL)
-        print("parameters : ",parameters)
+//        print("apiURL : ",apiURL)
+//        print("parameters : ",parameters)
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         } catch let error {
@@ -561,7 +561,7 @@ public class StartFullProcess {
             switch action {
             case .cancel:
                 self.stopCustomUIChanges()
-                print("Cancelled by user")
+              //  print("Cancelled by user")
             case .complete, .processTimeout:
                 self.stopCustomUIChanges()
                 guard let opticalResults = results else {

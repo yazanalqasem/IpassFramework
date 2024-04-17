@@ -21,8 +21,8 @@ public class APIHandler {
             "email": email,
             "password": password
         ]
-        print("loginPostApi",apiURL)
-        print("login parameters",parameters)
+//        print("loginPostApi",apiURL)
+//        print("login parameters",parameters)
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         } catch let error {
