@@ -67,7 +67,7 @@ public class APIHandler {
     }
 
 
-    private static func createSessionApi(email:String,auth_token:String){
+    public static func createSessionApi(email:String,auth_token:String){
         guard let apiURL = URL(string: "https://plusapi.ipass-mena.com/api/v1/ipass/plus/face/session/create?token=eyJhbGciOiJIUzI1NiJ9.eW9wbWFpbDEyM0BnbWFpbC5jb21hZnNkIHNkZmEgICA2ODlmMDJhYy1iZGMwLTQ1YzAtOWVlNC04NDRmOGMzMGQ0YzU.LiGjDJwSjOAMBU-ssBA0DbYPlz_sPLexErz70hGCP6A") else { return }
         
         var request = URLRequest(url: apiURL)
