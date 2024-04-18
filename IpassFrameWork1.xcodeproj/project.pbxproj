@@ -194,6 +194,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C9542D562BD11F01007CD1FD /* PBXTargetDependency */,
 			);
 			name = IpassFrameWork1;
 			packageProductDependencies = (
@@ -308,6 +309,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C9542D562BD11F01007CD1FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = C9542D552BD11F01007CD1FD /* FaceLiveness */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		75E325DC2BC67128001375E4 /* Debug */ = {
@@ -543,6 +551,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C9542D552BD11F01007CD1FD /* FaceLiveness */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C9B8AA7E2BD10BA100531F8C /* XCRemoteSwiftPackageReference "amplify-ui-swift-liveness" */;
+			productName = FaceLiveness;
+		};
 		C9B8AA7F2BD10BA100531F8C /* FaceLiveness */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C9B8AA7E2BD10BA100531F8C /* XCRemoteSwiftPackageReference "amplify-ui-swift-liveness" */;
