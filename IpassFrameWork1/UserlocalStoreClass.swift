@@ -21,6 +21,15 @@ public class UserLocalStore{
         }
     }
     
+    var sessionId :String {
+        get {
+            return UserDefaults.standard.value(forKey: "sessionId") as? String ?? ""
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "sessionId")
+        }
+    }
+    
     
 }
  

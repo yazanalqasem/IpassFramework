@@ -11,9 +11,18 @@ import SwiftUI
 struct FaceLiveView: View {
     @State private var isPresentingLiveness = true
     
+    @State private var sessionIdStr: String = ""
+    
     var body: some View {
+        
+       Text(sessionIdStr)
+        .onAppear {
+            sessionIdStr = UserLocalStore.shared.sessionId
+            print("sessionIdStr--->> ", sessionIdStr)
+        }
+        
         FaceLivenessDetectorView(
-            sessionID: "",
+            sessionID: sessionIdStr,
             region: "",
             isPresented: $isPresentingLiveness,
             onCompletion: { result in
