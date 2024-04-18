@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-@_implementationOnly import FaceLiveness
+import FaceLiveness
 
 struct FaceLiveView: View {
     @State private var isPresentingLiveness = true
