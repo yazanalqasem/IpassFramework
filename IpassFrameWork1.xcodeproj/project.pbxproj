@@ -33,8 +33,8 @@
 		C9B8AA582BD00C2200531F8C /* LCID+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8AA4C2BD00C2200531F8C /* LCID+Extensions.swift */; };
 		C9B8AA592BD00C2200531F8C /* MeasureSystem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8AA4D2BD00C2200531F8C /* MeasureSystem+Extensions.swift */; };
 		C9B8AA5A2BD00C2200531F8C /* AVCaptureDevicePosition+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8AA4E2BD00C2200531F8C /* AVCaptureDevicePosition+Extensions.swift */; };
-		C9B8AA792BD0F74D00531F8C /* FaceLiveness in Frameworks */ = {isa = PBXBuildFile; productRef = C9B8AA782BD0F74D00531F8C /* FaceLiveness */; };
 		C9B8AA7B2BD0F7CE00531F8C /* FaceLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8AA7A2BD0F7CE00531F8C /* FaceLiveView.swift */; };
+		C9B8AA802BD10BA100531F8C /* FaceLiveness in Frameworks */ = {isa = PBXBuildFile; productRef = C9B8AA7F2BD10BA100531F8C /* FaceLiveness */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,7 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9B8AA792BD0F74D00531F8C /* FaceLiveness in Frameworks */,
+				C9B8AA802BD10BA100531F8C /* FaceLiveness in Frameworks */,
 				6F9A3EFC91FCF8A79FEA8572 /* Pods_IpassFrameWork1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,7 +197,7 @@
 			);
 			name = IpassFrameWork1;
 			packageProductDependencies = (
-				C9B8AA782BD0F74D00531F8C /* FaceLiveness */,
+				C9B8AA7F2BD10BA100531F8C /* FaceLiveness */,
 			);
 			productName = IpassFrameWork1;
 			productReference = 75E325D72BC67128001375E4 /* IpassFrameWork1.framework */;
@@ -228,7 +228,7 @@
 			);
 			mainGroup = 75E325CD2BC67128001375E4;
 			packageReferences = (
-				C9B8AA772BD0F74D00531F8C /* XCRemoteSwiftPackageReference "amplify-ui-swift-liveness" */,
+				C9B8AA7E2BD10BA100531F8C /* XCRemoteSwiftPackageReference "amplify-ui-swift-liveness" */,
 			);
 			productRefGroup = 75E325D82BC67128001375E4 /* Products */;
 			projectDirPath = "";
@@ -532,7 +532,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C9B8AA772BD0F74D00531F8C /* XCRemoteSwiftPackageReference "amplify-ui-swift-liveness" */ = {
+		C9B8AA7E2BD10BA100531F8C /* XCRemoteSwiftPackageReference "amplify-ui-swift-liveness" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/aws-amplify/amplify-ui-swift-liveness.git";
 			requirement = {
@@ -543,9 +543,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C9B8AA782BD0F74D00531F8C /* FaceLiveness */ = {
+		C9B8AA7F2BD10BA100531F8C /* FaceLiveness */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C9B8AA772BD0F74D00531F8C /* XCRemoteSwiftPackageReference "amplify-ui-swift-liveness" */;
+			package = C9B8AA7E2BD10BA100531F8C /* XCRemoteSwiftPackageReference "amplify-ui-swift-liveness" */;
 			productName = FaceLiveness;
 		};
 /* End XCSwiftPackageProductDependency section */
