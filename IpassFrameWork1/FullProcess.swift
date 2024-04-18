@@ -9,7 +9,6 @@ import Foundation
 import DocumentReader
 import UIKit
 
-
 public class StartFullProcess {
     public init() {}
  
