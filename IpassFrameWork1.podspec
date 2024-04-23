@@ -54,11 +54,6 @@ Pod::Spec.new do |spec|
  # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   spec.dependency "DocumentReaderFullAuthRFID"
    spec.dependency "DocumentReader"
-  # spec.dependency "Alamofire"
-   # spec.dependency "Toast-Swift"
-    # spec.dependency "PKHUD"
-     # spec.dependency "ReachabilitySwift"
-          # spec.resources = "IpassFrameWork1/Resources/**/*.{license,bundle}"
-        spec.resources = 'IpassFrameWork1/**/*.license'
+      spec.resources = 'IpassFrameWork1/**/*.license'
 
 end
