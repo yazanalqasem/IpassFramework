@@ -210,13 +210,24 @@ public class StartFullProcess {
             } else {
                 print("Unexpected status code: \(status)")
             }
-            APIHandler.fetchData(token: UserLocalStore.shared.token, sessId: UserLocalStore.shared.sessionId) {status, statusString in
-                if status == true {
-                    print(statusString)
-                    print("Received JSON data:", statusString)
-                    
-                } else {
-                    print(statusString)
+//            APIHandler.fetchData(token: UserLocalStore.shared.token, sessId: UserLocalStore.shared.sessionId) {status, statusString in
+//                if status == true {
+//                    print(statusString)
+//                    print("Received JSON data:", statusString)
+//                    
+//                } else {
+//                    print(statusString)
+//                }
+//            }
+            
+            APIHandler.getDataFromAPI(token: UserLocalStore.shared.token, sessId: UserLocalStore.shared.sessionId) { (data, error) in
+                if let error = error {
+                    print("Error: \(error)")
+                    return
+                }
+                
+                if let data = data {
+                   
                 }
             }
             
