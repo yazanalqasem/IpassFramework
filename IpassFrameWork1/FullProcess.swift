@@ -197,7 +197,7 @@ public class StartFullProcess {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                         print("Response saveDataPostApi ---->>> ",json)
-                        completion("\(json)", nil)
+                        
                         
                         APIHandler.getDataFromAPI(token: appToken, sessId: random) { (data, error) in
                             if let error = error {
@@ -207,7 +207,9 @@ public class StartFullProcess {
                             
                             if let data = data {
                                 if let dataString = String(data: data, encoding: .utf8) {
-                                    print(dataString)
+                                    print("getDataFromAPI completed")
+                                    completion(dataString, nil)
+                                    
                                 } else {
                                     print("Error converting data to string.")
                                 }
