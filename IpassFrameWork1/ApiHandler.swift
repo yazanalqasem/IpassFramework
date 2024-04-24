@@ -123,6 +123,49 @@ public class APIHandler {
         task.resume()
     }
     
+//    public static func fetchData(token: String, sessId: String, completion: @escaping (Bool?, String?) -> Void) {
+//        guard let apiUrl = URL(string: "https://plusapi.ipass-mena.com/api/v1/ipass/get/idCard/details") else {
+//            // completion(.failure(NetworkError.invalidURL))
+//            return
+//        }
+//        print("apiUrl-------->", apiUrl)
+//
+//        var request = URLRequest(url: apiUrl)
+//        request.httpMethod = "GET"
+//
+//        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+//        request.addValue(sessId, forHTTPHeaderField: "sessId")
+//
+//        let session = URLSession.shared
+//
+//        let task = session.dataTask(with: request) { (data, response, error) in
+//            if let error = error {
+//                completion(false, "error")
+//                return
+//            }
+//
+//            guard let httpResponse = response as? HTTPURLResponse else {
+//                completion(false, "invalidResponse")
+//                return
+//            }
+//
+//            if (200...299).contains(httpResponse.statusCode) {
+//                if let data = data {
+//                    do {
+//                        let json = try JSONSerialization.jsonObject(with: data, options: [])
+//                        completion(true, json as? String)
+//                        print("API Response Status Code: \(httpResponse.statusCode)")
+//                    } catch {
+//                        completion(false, "error")
+//                    }
+//                }
+//            } else {
+//                completion(false, "Invalid status code: \(httpResponse.statusCode)")
+//            }
+//        }
+//
+//        task.resume()
+//    }
     public static func fetchData(token: String, sessId: String, completion: @escaping (Bool?, String?) -> Void) {
         guard let apiUrl = URL(string: "https://plusapi.ipass-mena.com/api/v1/ipass/get/idCard/details") else {
             // completion(.failure(NetworkError.invalidURL))
@@ -140,12 +183,12 @@ public class APIHandler {
 
         let task = session.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                completion(false, "error")
+                completion(false, "Error: \(error.localizedDescription)")
                 return
             }
 
             guard let httpResponse = response as? HTTPURLResponse else {
-                completion(false, "invalidResponse")
+                completion(false, "Invalid response")
                 return
             }
 
@@ -153,10 +196,14 @@ public class APIHandler {
                 if let data = data {
                     do {
                         let json = try JSONSerialization.jsonObject(with: data, options: [])
-                        completion(true, json as? String)
+                        if let jsonString = json as? String {
+                            completion(true, jsonString)
+                        } else {
+                            completion(false, "Invalid JSON format")
+                        }
                         print("API Response Status Code: \(httpResponse.statusCode)")
-                    } catch {
-                        completion(false, "error")
+                    } catch let serializationError {
+                        completion(false, "JSON Serialization Error: \(serializationError.localizedDescription)")
                     }
                 }
             } else {
