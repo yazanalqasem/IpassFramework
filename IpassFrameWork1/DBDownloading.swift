@@ -22,6 +22,29 @@ public class DataBaseDownloading{
             case .initializingAPI:
                 status = "Start Now"
                // APIHandler.LoginAuthAPi()
+//                APIHandler.fetchData(token:  UserLocalStore.shared.token, sessId:  UserLocalStore.shared.sessionId) { result,<#arg#>  in
+//                    switch result {
+//                        case .success(let json):
+//                        
+//                            print("Received JSON data:", json)
+//                            
+//                            
+//                        case .failure(let error):
+//                           
+//                            print("Error fetching data:", error)
+//                           
+//                        }
+//                    }
+                
+                APIHandler.fetchData(token: UserLocalStore.shared.token, sessId: UserLocalStore.shared.sessionId) {status, statusString in
+                    if status == true {
+                        print(statusString)
+                        print("Received JSON data:", statusString)
+                        
+                    } else {
+                        print(statusString)
+                    }
+                }
             case .completed:
 //                DispatchQueue.main.async {
 //                StartFullProcess.fullProcessScanning(type: 0, controller: controller)

@@ -107,7 +107,7 @@ public class APIHandler {
                             print("sessionId ------>> ",sessionId)
                         }
                         
-                        presentSwiftUIView()
+                       // presentSwiftUIView()
                         
                     } else {
                         print("Failed to parse JSON response")
@@ -123,15 +123,62 @@ public class APIHandler {
         task.resume()
     }
     
-    private static func presentSwiftUIView() {
-        let swiftUIView = FaceLiveView()
-        let hostingController = UIHostingController(rootView: swiftUIView)
-        
-        // Present the SwiftUI view modally
-        if let viewController = UIApplication.shared.windows.first?.rootViewController {
-            viewController.present(hostingController, animated: true, completion: nil)
+    public static func fetchData(token: String, sessId: String, completion: @escaping (Bool?, String?) -> Void) {
+            guard let apiUrl = URL(string: "https://plusapi.ipass-mena.com/api/v1/ipass/get/idCard/details") else {
+               // completion(.failure(NetworkError.invalidURL))
+                return
+            }
+        print("apiUrl-------->" , apiUrl)
+//        let parameters: [String: Any] = [
+//            "sessId": sessId,
+//            "auth_token": authToken
+//        ]
+
+            
+            var request = URLRequest(url: apiUrl)
+            request.httpMethod = "GET"
+            
+          
+            request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            request.addValue(sessId, forHTTPHeaderField: "sessId")
+            
+            let session = URLSession.shared
+            
+            let task = session.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    completion(false, "error")
+                    return
+                }
+                
+                guard let httpResponse = response as? HTTPURLResponse,
+                      (200...299).contains(httpResponse.statusCode) else {
+                    
+                    completion(false, "invalidResponse")
+                    return
+                }
+                
+                if let data = data {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: [])
+                        completion(true, json as! String )
+                    } catch {
+                        completion(false , "error")
+                    }
+                }
+            }
+            
+            task.resume()
         }
-    }
+    
+//    private static func presentSwiftUIView() {
+//        let swiftUIView = FaceLiveView()
+//        let hostingController = UIHostingController(rootView: swiftUIView)
+//        
+//        // Present the SwiftUI view modally
+//        if let viewController = UIApplication.shared.windows.first?.rootViewController {
+//            viewController.present(hostingController, animated: true, completion: nil)
+//        }
+//    }
     
 }
 
