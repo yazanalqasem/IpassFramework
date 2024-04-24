@@ -199,7 +199,7 @@ public class StartFullProcess {
                      //   print("Response saveDataPostApi ---->>> ",json)
                         
                         
-                        APIHandler.getDataFromAPI(token: appToken, sessId: random) { (data, error) in
+                        iPassHandler.getDataFromAPI(token: appToken, sessId: random) { (data, error) in
                             if let error = error {
                                 print("Error: \(error)")
                                 return

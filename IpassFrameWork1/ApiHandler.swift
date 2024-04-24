@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-public class APIHandler {
+public class iPassHandler {
     
     public static func LoginAuthAPi(email: String, password: String, completion: @escaping (Bool?, String?) -> Void){
         guard let apiURL = URL(string: "https://plusapi.ipass-mena.com/api/v1/ipass/create/authenticate/login") else { return }
