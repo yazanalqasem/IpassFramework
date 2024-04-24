@@ -176,6 +176,7 @@ public class APIHandler {
                 URLQueryItem(name: "sessId", value: sessId)
             ]
             
+            print("getDataFromAPI URL----->> ", getDataFromAPI)
             if let url = urlComponents.url {
                 let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
                     DispatchQueue.main.async {

@@ -17,7 +17,7 @@ public class StartFullProcess {
     private var delegate:ScanningResultData?
     public var resultData:DocumentReaderResults?
     
-    public static func fullProcessScanning(type: Int, controller: UIViewController, userToken:String, appToken:String, completion: @escaping (String?, Error?) -> Void) {
+    public static func fullProcessScanning(userEmail:String, type: Int, controller: UIViewController, userToken:String, appToken:String, completion: @escaping (String?, Error?) -> Void) {
 //        DocReader.shared.processParams.doublePageSpread = true
         DocReader.shared.processParams.multipageProcessing = true
         DocReader.shared.processParams.authenticityParams?.livenessParams?.checkHolo = false
@@ -53,7 +53,7 @@ public class StartFullProcess {
                                     return
                                 }
 //                                completion(results.rawResult, nil)
-                                getDocImages(datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
+                                getDocImages(userEmail:userEmail, datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
                                     if let result = resuldata{
                                         completion(result, nil)
                                     }else{
@@ -65,7 +65,7 @@ public class StartFullProcess {
                                     return
                                 }
 //                                completion(results.rawResult, nil)
-                                getDocImages(datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
+                                getDocImages(userEmail:userEmail, datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
                                     if let result = resuldata{
                                         completion(result, nil)
                                     }else{
@@ -84,7 +84,7 @@ public class StartFullProcess {
                         
                     } else {
 //                        completion(docResults?.rawResult, nil)
-                        getDocImages(datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
+                        getDocImages(userEmail:userEmail, datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
                             if let result = resuldata{
                                 completion(result, nil)
                             }else{
@@ -118,7 +118,7 @@ public class StartFullProcess {
         return randomValue + randStr
     }
 
-    private static func getDocImages(datavalue: DocumentReaderResults, userToken:String, appToken:String, completion: @escaping (String?, Error?) -> Void) {
+    private static func getDocImages(userEmail:String, datavalue: DocumentReaderResults, userToken:String, appToken:String, completion: @escaping (String?, Error?) -> Void) {
         
 //        let dispatchGroup = DispatchGroup()
 //        var ocrResult: String?
@@ -140,7 +140,7 @@ public class StartFullProcess {
         
         let randomNo = generateRandomTwoDigitNumber()
         
-        saveDataPostApi(random: randomNo, results: datavalue, userToken: userToken, appToken: appToken, completion: { (result, error) in
+        saveDataPostApi(userEmail:userEmail, random: randomNo, results: datavalue, userToken: userToken, appToken: appToken, completion: { (result, error) in
             if let result = result {
                 completion(result, nil)
             } else {
@@ -159,7 +159,7 @@ public class StartFullProcess {
 
 
     
-    private static func saveDataPostApi(random:String,results:DocumentReaderResults, userToken:String, appToken:String,  completion: @escaping (String?, Error?) -> Void){
+    private static func saveDataPostApi(userEmail:String, random:String,results:DocumentReaderResults, userToken:String, appToken:String,  completion: @escaping (String?, Error?) -> Void){
         guard let apiURL = URL(string: "https://plusapi.ipass-mena.com/api/v1/ipass/sdk/data/save") else { return }
        let jsondata = convertStringToJSON(results.rawResult)
         
@@ -168,7 +168,7 @@ public class StartFullProcess {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let dict:[String:Any] = [:]
         let parameters: [String: Any] = [
-            "email": "ipassmobile@yopmail.com",
+            "email": userEmail,
             "idvData": jsondata ?? "",
             "livenessdata": dict,
             "randomid": random,
@@ -197,8 +197,25 @@ public class StartFullProcess {
             if status == 200 {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                        print("Response save data Api-=-=",json)
+                        print("Response saveDataPostApi ---->>> ",json)
                         completion("\(json)", nil)
+                        
+                        APIHandler.getDataFromAPI(token: appToken, sessId: UserLocalStore.shared.sessionId) { (data, error) in
+                            if let error = error {
+                                print("Error: \(error)")
+                                return
+                            }
+                            
+                            if let data = data {
+                                if let dataString = String(data: data, encoding: .utf8) {
+                                    print(dataString)
+                                } else {
+                                    print("Error converting data to string.")
+                                }
+                            }
+                            
+                        }
+                        
                     } else {
                         print("Failed to parse JSON response")
                     }
@@ -210,47 +227,7 @@ public class StartFullProcess {
             } else {
                 print("Unexpected status code: \(status)")
             }
-//            APIHandler.fetchData(token: UserLocalStore.shared.token, sessId: UserLocalStore.shared.sessionId) {status, statusString in
-//                if status == true {
-//                    print(statusString)
-//                    print("Received JSON data:", statusString)
-//                    
-//                } else {
-//                    print(statusString)
-//                }
-//            }
-            let datatoken = "eyJhbGciOiJIUzI1NiJ9.eW9wbWFpbDEyM0BnbWFpbC5jb21hZnNkIHNkZmEgICA2ODlmMDJhYy1iZGMwLTQ1YzAtOWVlNC04NDRmOGMzMGQ0YzU.LiGjDJwSjOAMBU-ssBA0DbYPlz_sPLexErz70hGCP6A"
-            APIHandler.getDataFromAPI(token: datatoken, sessId: UserLocalStore.shared.sessionId) { (data, error) in
-                if let error = error {
-                    print("Error: \(error)")
-                    return
-                }
-                
-                if let data = data {
-                    if let dataString = String(data: data, encoding: .utf8) {
-                        print(dataString)
-                    } else {
-                        print("Error converting data to string.")
-                    }
-                }
-                APIHandler.fetchDataliveness(token: datatoken, sessId: UserLocalStore.shared.sessionId) { (data, error) in
-                    if let error = error {
-                        print("Error: \(error)")
-                        return
-                    }
-                    
-                    if let data = data {
-                        if let dataString = String(data: data, encoding: .utf8) {
-                                    print(dataString)
-                                } else {
-                                    print("Error converting data to string.")
-                                }
-                }
-            }
-            }
-            
         }
-
         task.resume()
     }
 
@@ -912,80 +889,21 @@ extension UIImage {
 }
 
 
-
-
-
-
-
+/*
  
-//    private static func faceMatchingApi(frontImg: String,backImg:String) {
-//         guard let apiURL = URL(string: "https://plusapi.ipass-mena.com/api/v1/ipass/plus/ocr/data?token=eyJhbGciOiJIUzI1NiJ9.aXBhc3Ntb2JpbGVAeW9wbWFpbC5jb21pcGFzcyBpcGFzcw.y66dMZJUkzYrRZoczlkNum8unLc910zIuGUVaQW5lUI") else {
-//             return
-//         }
-//
-//         var parameters: [String: Any] = [:]
-//
-//         parameters["email"] = "ipassmobile@yopmail.com"
-//         parameters["auth_token"] = UserLocalStore.shared.token
-//         parameters["image1"] = frontImg
-//         parameters["image2"] = backImg
-//         parameters["custEmail"] = "anshul12@gmail.com"
-//         parameters["workflow"] = "10032"
-//         parameters["sid"] = "47"
-//
-//        print("dictData", parameters)
-//         // Create JSON data from parameters
-//         guard let jsonData = try? JSONSerialization.data(withJSONObject: parameters) else {
-//             print("Error converting parameters to JSON")
-//             return
-//         }
-//
-//         var request = URLRequest(url: apiURL)
-//         request.httpMethod = "POST"
-//         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//         request.httpBody = jsonData
-//
-//         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-//             DispatchQueue.main.async {
-//                 // Handle response
-//                 if let error = error {
-//                     print("Error: \(error.localizedDescription)")
-//
-//                     return
-//                 }
-//
-//                 guard let httpResponse = response as? HTTPURLResponse else {
-//                     print("Invalid response")
-//
-//                     return
-//                 }
-//
-//                 let statusCode = httpResponse.statusCode
-//                 print("Status code: \(statusCode)")
-//
-//                 if statusCode == 201 {
-//                     if let responseData = data {
-//                         do {
-//                             if let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] {
-//                                 print("Response JSON: \(json)")
-//
-//
-//                             }
-//                         } catch {
-//                             print("Error decoding JSON: \(error.localizedDescription)")
-//
-//                         }
-//                     }
-//                 } else {
-//                     print("Invalid status code: \(statusCode)")
-//                     print("error", error?.localizedDescription)
-//                 }
-//             }
-//         }
-//
-//         task.resume()
-//     }
-//
-//
-
-
+ 
+ APIHandler.fetchDataliveness(token: datatoken, sessId: UserLocalStore.shared.sessionId) { (data, error) in
+     if let error = error {
+         print("Error: \(error)")
+         return
+     }
+     
+     if let data = data {
+         if let dataString = String(data: data, encoding: .utf8) {
+                     print(dataString)
+                 } else {
+                     print("Error converting data to string.")
+                 }
+ }
+}
+ */
