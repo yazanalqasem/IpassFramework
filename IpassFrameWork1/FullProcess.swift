@@ -176,7 +176,7 @@ public class StartFullProcess {
             "appToken" : appToken
         ]
 
-        print(parameters)
+        //print(parameters)
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         } catch let error {
@@ -196,7 +196,7 @@ public class StartFullProcess {
             if status == 200 {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                        print("Response saveDataPostApi ---->>> ",json)
+                     //   print("Response saveDataPostApi ---->>> ",json)
                         
                         
                         APIHandler.getDataFromAPI(token: appToken, sessId: random) { (data, error) in
