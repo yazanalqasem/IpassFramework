@@ -227,7 +227,11 @@ public class StartFullProcess {
                 }
                 
                 if let data = data {
-                   
+                    if let dataString = String(data: data, encoding: .utf8) {
+                                print(dataString)
+                            } else {
+                                print("Error converting data to string.")
+                            }
                 }
             }
             
