@@ -35,16 +35,19 @@ public class DataBaseDownloading{
 //                           
 //                        }
 //                    }
+//                APIHandler.fetchData(token: UserLocalStore.shared.token, sessId: UserLocalStore.shared.token) { success, response in
+//                    if let success = success {
+//                        if success {
+//                            print("API request successful. Response: \(response ?? "")")
+//                        } else {
+//                            print("API request failed. Error: \(response ?? "")")
+//                        }
+//                    } else {
+//                        print("Unknown error occurred.")
+//                    }
+//                }
                 
-                APIHandler.fetchData(token: UserLocalStore.shared.token, sessId: UserLocalStore.shared.sessionId) {status, statusString in
-                    if status == true {
-                        print(statusString)
-                        print("Received JSON data:", statusString)
-                        
-                    } else {
-                        print(statusString)
-                    }
-                }
+              
             case .completed:
 //                DispatchQueue.main.async {
 //                StartFullProcess.fullProcessScanning(type: 0, controller: controller)
