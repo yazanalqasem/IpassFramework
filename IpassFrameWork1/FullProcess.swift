@@ -228,29 +228,25 @@ public class StartFullProcess {
                 
                 if let data = data {
                     if let dataString = String(data: data, encoding: .utf8) {
-                                print(dataString)
-                            } else {
-                                print("Error converting data to string.")
-                            }
-                    APIHandler.fetchDataliveness(token: datatoken, sessId: UserLocalStore.shared.sessionId) { (data, error) in
-                        if let error = error {
-                            print("Error: \(error)")
-                            return
-                        }
-                        
-                        if let data = data {
-                            if let dataString = String(data: data, encoding: .utf8) {
-                                        print(dataString)
-                                    } else {
-                                        print("Error converting data to string.")
-                                    }
+                        print(dataString)
+                    } else {
+                        print("Error converting data to string.")
                     }
                 }
+                APIHandler.fetchDataliveness(token: datatoken, sessId: UserLocalStore.shared.sessionId) { (data, error) in
+                    if let error = error {
+                        print("Error: \(error)")
+                        return
+                    }
                     
-                    
-                    
-                    
+                    if let data = data {
+                        if let dataString = String(data: data, encoding: .utf8) {
+                                    print(dataString)
+                                } else {
+                                    print("Error converting data to string.")
+                                }
                 }
+            }
             }
             
         }
