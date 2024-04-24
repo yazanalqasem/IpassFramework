@@ -175,9 +175,7 @@ public class StartFullProcess {
             "userToken" : userToken,
             "appToken" : appToken
         ]
-        
-//        print("apiURL : ",apiURL)
-//        print("parameters : ",parameters)
+
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         } catch let error {
