@@ -192,7 +192,7 @@ public class APIHandler {
                 return
             }
 
-            if (200...299).contains(httpResponse.statusCode) {
+            if (200...400).contains(httpResponse.statusCode) {
                 if let data = data {
                     do {
                         let json = try JSONSerialization.jsonObject(with: data, options: [])
