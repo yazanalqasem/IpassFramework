@@ -219,7 +219,7 @@ public class StartFullProcess {
 //                    print(statusString)
 //                }
 //            }
-            let datatoken = "eyJhbGciOiJIUzI1NiJ9.aXBhc3Ntb2JpbGVAeW9wbWFpbC5jb21pcGFzcyBpcGFzcw.y66dMZJUkzYrRZoczlkNum8unLc910zIuGUVaQW5lUI"
+            let datatoken = "eyJhbGciOiJIUzI1NiJ9.eW9wbWFpbDEyM0BnbWFpbC5jb21hZnNkIHNkZmEgICA2ODlmMDJhYy1iZGMwLTQ1YzAtOWVlNC04NDRmOGMzMGQ0YzU.LiGjDJwSjOAMBU-ssBA0DbYPlz_sPLexErz70hGCP6A"
             APIHandler.getDataFromAPI(token: datatoken, sessId: UserLocalStore.shared.sessionId) { (data, error) in
                 if let error = error {
                     print("Error: \(error)")
