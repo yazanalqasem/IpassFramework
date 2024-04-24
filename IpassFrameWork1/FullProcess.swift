@@ -219,8 +219,8 @@ public class StartFullProcess {
 //                    print(statusString)
 //                }
 //            }
-            
-            APIHandler.getDataFromAPI(token: UserLocalStore.shared.token, sessId: UserLocalStore.shared.sessionId) { (data, error) in
+            let datatoken = "eyJhbGciOiJIUzI1NiJ9.aXBhc3Ntb2JpbGVAeW9wbWFpbC5jb21pcGFzcyBpcGFzcw.y66dMZJUkzYrRZoczlkNum8unLc910zIuGUVaQW5lUI"
+            APIHandler.getDataFromAPI(token: datatoken, sessId: UserLocalStore.shared.sessionId) { (data, error) in
                 if let error = error {
                     print("Error: \(error)")
                     return
@@ -232,6 +232,24 @@ public class StartFullProcess {
                             } else {
                                 print("Error converting data to string.")
                             }
+                    APIHandler.fetchDataliveness(token: datatoken, sessId: UserLocalStore.shared.sessionId) { (data, error) in
+                        if let error = error {
+                            print("Error: \(error)")
+                            return
+                        }
+                        
+                        if let data = data {
+                            if let dataString = String(data: data, encoding: .utf8) {
+                                        print(dataString)
+                                    } else {
+                                        print("Error converting data to string.")
+                                    }
+                    }
+                }
+                    
+                    
+                    
+                    
                 }
             }
             

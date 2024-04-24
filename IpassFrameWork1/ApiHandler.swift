@@ -190,67 +190,30 @@ public class APIHandler {
         }
     }
     
+    public static func fetchDataliveness(token: String, sessId: String, completion: @escaping (Data?, Error?) -> Void) {
+      
+        if var urlComponents = URLComponents(string: "https://plusapi.ipass-mena.com/api/v1/ipass/get/liveness/facesimilarity/details") {
+            urlComponents.queryItems = [
+                URLQueryItem(name: "token", value: token),
+                URLQueryItem(name: "sessId", value: sessId)
+            ]
+            
+            if let url = urlComponents.url {
+                let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                    DispatchQueue.main.async {
+                        completion(data, error)
+                    }
+                }
+                
+                task.resume()
+            } else {
+                completion(nil, NSError(domain: "Invalid URL", code: 0, userInfo: nil))
+            }
+        }
+    }
     
     
-    
-//    public static func fetchData(token: String, sessId: String, completion: @escaping (Bool?, String?) -> Void) {
-//        guard let apiUrl = URL(string: "https://plusapi.ipass-mena.com/api/v1/ipass/get/idCard/details") else {
-//            // completion(.failure(NetworkError.invalidURL))
-//            return
-//        }
-//        print("apiUrl-------->", apiUrl)
-//
-//        var request = URLRequest(url: apiUrl)
-//        request.httpMethod = "GET"
-//
-//        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-//        request.addValue(sessId, forHTTPHeaderField: "sessId")
-//
-//        let session = URLSession.shared
-//
-//        let task = session.dataTask(with: request) { (data, response, error) in
-//            if let error = error {
-//                completion(false, "Error: \(error.localizedDescription)")
-//                return
-//            }
-//
-//            guard let httpResponse = response as? HTTPURLResponse else {
-//                completion(false, "Invalid response")
-//                return
-//            }
-//
-//            if (200...400).contains(httpResponse.statusCode) {
-//                if let data = data {
-//                    do {
-//                        let json = try JSONSerialization.jsonObject(with: data, options: [])
-//                        if let jsonString = json as? String {
-//                            completion(true, jsonString)
-//                        } else {
-//                            completion(false, "Invalid JSON format")
-//                        }
-//                        print("API Response Status Code: \(httpResponse.statusCode)")
-//                    } catch let serializationError {
-//                        completion(false, "JSON Serialization Error: \(serializationError.localizedDescription)")
-//                    }
-//                }
-//            } else {
-//                completion(false, "Invalid status code: \(httpResponse.statusCode)")
-//            }
-//        }
-//
-//        task.resume()
-//    }
 
-    
-//    private static func presentSwiftUIView() {
-//        let swiftUIView = FaceLiveView()
-//        let hostingController = UIHostingController(rootView: swiftUIView)
-//        
-//        // Present the SwiftUI view modally
-//        if let viewController = UIApplication.shared.windows.first?.rootViewController {
-//            viewController.present(hostingController, animated: true, completion: nil)
-//        }
-//    }
     
 }
 
