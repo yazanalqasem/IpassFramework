@@ -191,6 +191,33 @@ public class iPassHandler {
         }
     }
     
+    
+    
+    
+    public static func getFatchDataFromAPI(token: String, sessId: String, completion: @escaping (Data?, Error?) -> Void) {
+      
+        if var urlComponents = URLComponents(string: "https://plusapi.ipass-mena.com/api/v1/ipass/get/document/manipulated/result") {
+            urlComponents.queryItems = [
+                URLQueryItem(name: "token", value: token),
+                URLQueryItem(name: "sessId", value: sessId)
+            ]
+            
+           // print("getDataFromAPI URL----->> ", urlComponents)
+            if let url = urlComponents.url {
+                let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                    DispatchQueue.main.async {
+                        completion(data, error)
+                    }
+                }
+                
+                task.resume()
+            } else {
+                completion(nil, NSError(domain: "Invalid URL", code: 0, userInfo: nil))
+            }
+        }
+    }
+    
+    
     public static func fetchDataliveness(token: String, sessId: String, completion: @escaping (Data?, Error?) -> Void) {
       
         if var urlComponents = URLComponents(string: "https://plusapi.ipass-mena.com/api/v1/ipass/get/liveness/facesimilarity/details") {

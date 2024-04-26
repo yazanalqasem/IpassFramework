@@ -103,6 +103,93 @@ public class StartFullProcess {
     }
     
     
+    public static func CustomProcessScanning(userEmail:String, type: Int, controller: UIViewController, userToken:String, appToken:String, completion: @escaping (String?, Error?) -> Void) {
+//        DocReader.shared.processParams.doublePageSpread = true
+        DocReader.shared.processParams.multipageProcessing = true
+        DocReader.shared.processParams.authenticityParams?.livenessParams?.checkHolo = false
+        DocReader.shared.processParams.authenticityParams?.livenessParams?.checkOVI = false
+        DocReader.shared.processParams.authenticityParams?.livenessParams?.checkMLI = false
+        
+        let config = DocReader.ScannerConfig()
+        
+        switch type {
+        case 0:
+            config.scenario = RGL_SCENARIO_FULL_AUTH
+        case 1:
+            config.scenario = RGL_SCENARIO_CREDIT_CARD
+        case 2:
+            config.scenario = RGL_SCENARIO_MRZ
+        case 3:
+            config.scenario = RGL_SCENARIO_BARCODE
+        default:
+            config.scenario = RGL_SCENARIO_FULL_AUTH
+        }
+        DocReader.shared.showScanner(presenter: controller, config: config) { [self] (action, docResults, error) in
+            if action == .complete || action == .processTimeout {
+//                 print(docResults?.rawResult as Any)
+                
+    
+                    if docResults?.chipPage != 0  {
+                        //self.startRFIDReading(res)
+                        
+                        DocReader.shared.startRFIDReader(fromPresenter: controller, completion: { [] (action, results, error) in
+                            switch action {
+                            case .complete:
+                                guard let results = results else {
+                                    return
+                                }
+//                                completion(results.rawResult, nil)
+                                getDocImages(userEmail:userEmail, datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
+                                    if let result = resuldata{
+                                        completion(result, nil)
+                                    }else{
+                                        completion(nil, error)
+                                    }
+                                })
+                            case .cancel:
+                                guard let results = docResults else {
+                                    return
+                                }
+//                                completion(results.rawResult, nil)
+                                getDocImages(userEmail:userEmail, datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
+                                    if let result = resuldata{
+                                        completion(result, nil)
+                                    }else{
+                                        completion(nil, error)
+                                    }
+                                })
+                            case .error:
+                                print("Error")
+                                completion(nil, error)
+                            default:
+                                break
+                            }
+                        })
+
+                        
+                        
+                    } else {
+//                        completion(docResults?.rawResult, nil)
+                        getDocImages(userEmail:userEmail, datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
+                            if let result = resuldata{
+                                completion(result, nil)
+                            }else{
+                                completion(nil, error)
+                            }
+                        })
+
+                    }
+ 
+            }
+            else  if action == .cancel  {
+                completion(nil, error)
+            }
+        }
+      
+    }
+    
+    
+    
     
     private static func generateRandomTwoDigitNumber() -> String {
         let lowerBound = 10
@@ -216,6 +303,26 @@ public class StartFullProcess {
                             }
                             
                         }
+                        
+                        iPassHandler.getFatchDataFromAPI(token: appToken, sessId: random) { (data, error) in
+                            if let error = error {
+                                print("Error: \(error)")
+                                return
+                            }
+                            
+                            if let data = data {
+                                if let dataString = String(data: data, encoding: .utf8) {
+                                    print("getDataFromAPI completed")
+                                    completion(dataString, nil)
+                                    
+                                } else {
+                                    print("Error converting data to string.")
+                                }
+                            }
+                            
+                        }
+                        
+                        
                         
                     } else {
                         print("Failed to parse JSON response")
