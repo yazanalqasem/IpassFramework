@@ -154,7 +154,7 @@ public class iPassHandler {
     
     public static func getFatchDataFromAPI(token: String, sessId: String, completion: @escaping (Data?, Error?) -> Void) {
       
-        if var urlComponents = URLComponents(string: "https://plusapi.ipass-mena.com/api/v1/ipass/get/document/manipulated") {
+        if var urlComponents = URLComponents(string: "https://plusapi.ipass-mena.com/api/v1/ipass/get/document/manipulated/result") {
             urlComponents.queryItems = [
                 URLQueryItem(name: "token", value: token),
                 URLQueryItem(name: "sessId", value: sessId)
