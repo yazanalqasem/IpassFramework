@@ -131,7 +131,7 @@ public class iPassHandler {
         if var urlComponents = URLComponents(string: "https://plusapi.ipass-mena.com/api/v1/ipass/get/idCard/details") {
             urlComponents.queryItems = [
                 URLQueryItem(name: "token", value: token),
-                URLQueryItem(name: "sesid", value: sessId)
+                URLQueryItem(name: "sessId", value: sessId)
             ]
             
            // print("getDataFromAPI URL----->> ", urlComponents)
@@ -157,7 +157,7 @@ public class iPassHandler {
         if var urlComponents = URLComponents(string: "https://plusapi.ipass-mena.com/api/v1/ipass/get/document/manipulated/result") {
             urlComponents.queryItems = [
                 URLQueryItem(name: "token", value: token),
-                URLQueryItem(name: "sessId", value: sessId)
+                URLQueryItem(name: "sesid", value: sessId)
             ]
             
            // print("getDataFromAPI URL----->> ", urlComponents)
