@@ -9,16 +9,16 @@ import Foundation
 import DocumentReader
 import UIKit
 
-public class StartFullProcess {
+public class iPassSDK {
     public init() {}
- 
+    
     private var selectedScenario: String?
     private var sectionsData: [CustomizationSection] = []
     private var delegate:ScanningResultData?
     public var resultData:DocumentReaderResults?
     
     public static func fullProcessScanning(userEmail:String, type: Int, controller: UIViewController, userToken:String, appToken:String, completion: @escaping (String?, Error?) -> Void) {
-//        DocReader.shared.processParams.doublePageSpread = true
+        //        DocReader.shared.processParams.doublePageSpread = true
         DocReader.shared.processParams.multipageProcessing = true
         DocReader.shared.processParams.authenticityParams?.livenessParams?.checkHolo = false
         DocReader.shared.processParams.authenticityParams?.livenessParams?.checkOVI = false
@@ -40,71 +40,71 @@ public class StartFullProcess {
         }
         DocReader.shared.showScanner(presenter: controller, config: config) { [self] (action, docResults, error) in
             if action == .complete || action == .processTimeout {
-//                 print(docResults?.rawResult as Any)
+                //                 print(docResults?.rawResult as Any)
                 
-    
-                    if docResults?.chipPage != 0  {
-                        //self.startRFIDReading(res)
-                        
-                        DocReader.shared.startRFIDReader(fromPresenter: controller, completion: { [] (action, results, error) in
-                            switch action {
-                            case .complete:
-                                guard let results = results else {
-                                    return
-                                }
-//                                completion(results.rawResult, nil)
-                                getDocImages(userEmail:userEmail, datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
-                                    if let result = resuldata{
-                                        completion(result, nil)
-                                    }else{
-                                        completion(nil, error)
-                                    }
-                                })
-                            case .cancel:
-                                guard let results = docResults else {
-                                    return
-                                }
-//                                completion(results.rawResult, nil)
-                                getDocImages(userEmail:userEmail, datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
-                                    if let result = resuldata{
-                                        completion(result, nil)
-                                    }else{
-                                        completion(nil, error)
-                                    }
-                                })
-                            case .error:
-                                print("Error")
-                                completion(nil, error)
-                            default:
-                                break
+                
+                if docResults?.chipPage != 0  {
+                    //self.startRFIDReading(res)
+                    
+                    DocReader.shared.startRFIDReader(fromPresenter: controller, completion: { [] (action, results, error) in
+                        switch action {
+                        case .complete:
+                            guard let results = results else {
+                                return
                             }
-                        })
-
-                        
-                        
-                    } else {
-//                        completion(docResults?.rawResult, nil)
-                        getDocImages(userEmail:userEmail, datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
-                            if let result = resuldata{
-                                completion(result, nil)
-                            }else{
-                                completion(nil, error)
+                            //                                completion(results.rawResult, nil)
+                            getDocImages(isForCustom : false, userEmail:userEmail, datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
+                                if let result = resuldata{
+                                    completion(result, nil)
+                                }else{
+                                    completion(nil, error)
+                                }
+                            })
+                        case .cancel:
+                            guard let results = docResults else {
+                                return
                             }
-                        })
-
-                    }
- 
+                            //                                completion(results.rawResult, nil)
+                            getDocImages(isForCustom : false, userEmail:userEmail, datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
+                                if let result = resuldata{
+                                    completion(result, nil)
+                                }else{
+                                    completion(nil, error)
+                                }
+                            })
+                        case .error:
+                            print("Error")
+                            completion(nil, error)
+                        default:
+                            break
+                        }
+                    })
+                    
+                    
+                    
+                } else {
+                    //                        completion(docResults?.rawResult, nil)
+                    getDocImages(isForCustom : false, userEmail:userEmail, datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
+                        if let result = resuldata{
+                            completion(result, nil)
+                        }else{
+                            completion(nil, error)
+                        }
+                    })
+                    
+                }
+                
             }
             else  if action == .cancel  {
                 completion(nil, error)
             }
         }
-      
+        
     }
     
     
     public static func CustomProcessScanning(userEmail:String, type: Int, controller: UIViewController, userToken:String, appToken:String, completion: @escaping (String?, Error?) -> Void) {
-//        DocReader.shared.processParams.doublePageSpread = true
+        //        DocReader.shared.processParams.doublePageSpread = true
         DocReader.shared.processParams.multipageProcessing = true
         DocReader.shared.processParams.authenticityParams?.livenessParams?.checkHolo = false
         DocReader.shared.processParams.authenticityParams?.livenessParams?.checkOVI = false
@@ -126,66 +126,66 @@ public class StartFullProcess {
         }
         DocReader.shared.showScanner(presenter: controller, config: config) { [self] (action, docResults, error) in
             if action == .complete || action == .processTimeout {
-//                 print(docResults?.rawResult as Any)
+                //                 print(docResults?.rawResult as Any)
                 
-    
-                    if docResults?.chipPage != 0  {
-                        //self.startRFIDReading(res)
-                        
-                        DocReader.shared.startRFIDReader(fromPresenter: controller, completion: { [] (action, results, error) in
-                            switch action {
-                            case .complete:
-                                guard let results = results else {
-                                    return
-                                }
-//                                completion(results.rawResult, nil)
-                                getDocImages(userEmail:userEmail, datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
-                                    if let result = resuldata{
-                                        completion(result, nil)
-                                    }else{
-                                        completion(nil, error)
-                                    }
-                                })
-                            case .cancel:
-                                guard let results = docResults else {
-                                    return
-                                }
-//                                completion(results.rawResult, nil)
-                                getDocImages(userEmail:userEmail, datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
-                                    if let result = resuldata{
-                                        completion(result, nil)
-                                    }else{
-                                        completion(nil, error)
-                                    }
-                                })
-                            case .error:
-                                print("Error")
-                                completion(nil, error)
-                            default:
-                                break
+                
+                if docResults?.chipPage != 0  {
+                    //self.startRFIDReading(res)
+                    
+                    DocReader.shared.startRFIDReader(fromPresenter: controller, completion: { [] (action, results, error) in
+                        switch action {
+                        case .complete:
+                            guard let results = results else {
+                                return
                             }
-                        })
-
-                        
-                        
-                    } else {
-//                        completion(docResults?.rawResult, nil)
-                        getDocImages(userEmail:userEmail, datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
-                            if let result = resuldata{
-                                completion(result, nil)
-                            }else{
-                                completion(nil, error)
+                            //                                completion(results.rawResult, nil)
+                            getDocImages(isForCustom : true, userEmail:userEmail, datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
+                                if let result = resuldata{
+                                    completion(result, nil)
+                                }else{
+                                    completion(nil, error)
+                                }
+                            })
+                        case .cancel:
+                            guard let results = docResults else {
+                                return
                             }
-                        })
-
-                    }
- 
+                            //                                completion(results.rawResult, nil)
+                            getDocImages(isForCustom : true, userEmail:userEmail, datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
+                                if let result = resuldata{
+                                    completion(result, nil)
+                                }else{
+                                    completion(nil, error)
+                                }
+                            })
+                        case .error:
+                            print("Error")
+                            completion(nil, error)
+                        default:
+                            break
+                        }
+                    })
+                    
+                    
+                    
+                } else {
+                    //                        completion(docResults?.rawResult, nil)
+                    getDocImages(isForCustom : true, userEmail:userEmail, datavalue: docResults ?? DocumentReaderResults(), userToken: userToken, appToken: appToken, completion: {(resuldata, error)in
+                        if let result = resuldata{
+                            completion(result, nil)
+                        }else{
+                            completion(nil, error)
+                        }
+                    })
+                    
+                }
+                
             }
             else  if action == .cancel  {
                 completion(nil, error)
             }
         }
-      
+        
     }
     
     
@@ -204,51 +204,51 @@ public class StartFullProcess {
         
         return randomValue + randStr
     }
-
-    private static func getDocImages(userEmail:String, datavalue: DocumentReaderResults, userToken:String, appToken:String, completion: @escaping (String?, Error?) -> Void) {
+    
+    private static func getDocImages(isForCustom : Bool, userEmail:String, datavalue: DocumentReaderResults, userToken:String, appToken:String, completion: @escaping (String?, Error?) -> Void) {
         
-//        let dispatchGroup = DispatchGroup()
-//        var ocrResult: String?
-//        var saveResult: String?
-//
-//        var image1 = ""
-//        var image2 = ""
-//        
-//        for i in (0 ..<  datavalue.graphicResult.fields.count) {
-//            if(datavalue.graphicResult.fields[i].fieldName.lowercased() == "document image") {
-//                if(image1 == "") {
-//                    image1 = datavalue.graphicResult.fields[i].value.toBase64() ?? ""
-//                }
-//                else  if(image2 == "") {
-//                    image2 = datavalue.graphicResult.fields[i].value.toBase64() ?? ""
-//                }
-//            }
-//           }
+        //        let dispatchGroup = DispatchGroup()
+        //        var ocrResult: String?
+        //        var saveResult: String?
+        //
+        //        var image1 = ""
+        //        var image2 = ""
+        //
+        //        for i in (0 ..<  datavalue.graphicResult.fields.count) {
+        //            if(datavalue.graphicResult.fields[i].fieldName.lowercased() == "document image") {
+        //                if(image1 == "") {
+        //                    image1 = datavalue.graphicResult.fields[i].value.toBase64() ?? ""
+        //                }
+        //                else  if(image2 == "") {
+        //                    image2 = datavalue.graphicResult.fields[i].value.toBase64() ?? ""
+        //                }
+        //            }
+        //           }
         
         let randomNo = generateRandomTwoDigitNumber()
         
-        saveDataPostApi(userEmail:userEmail, random: randomNo, results: datavalue, userToken: userToken, appToken: appToken, completion: { (result, error) in
+        saveDataPostApi(isForCustom : isForCustom, userEmail:userEmail, random: randomNo, results: datavalue, userToken: userToken, appToken: appToken, completion: { (result, error) in
             if let result = result {
                 completion(result, nil)
             } else {
                 completion(nil, error)
             }
         })
-
-    }
-
-    
-   private func randomStringGenerator(length: Int) -> String {
-      let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-      return String((0..<length).map{ _ in letters.randomElement()! })
+        
     }
     
-
-
     
-    private static func saveDataPostApi(userEmail:String, random:String,results:DocumentReaderResults, userToken:String, appToken:String,  completion: @escaping (String?, Error?) -> Void){
+    private func randomStringGenerator(length: Int) -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+    
+    
+    
+    
+    private static func saveDataPostApi(isForCustom : Bool, userEmail:String, random:String,results:DocumentReaderResults, userToken:String, appToken:String,  completion: @escaping (String?, Error?) -> Void){
         guard let apiURL = URL(string: "https://plusapi.ipass-mena.com/api/v1/ipass/sdk/data/save") else { return }
-       let jsondata = convertStringToJSON(results.rawResult)
+        let jsondata = convertStringToJSON(results.rawResult)
         
         var request = URLRequest(url: apiURL)
         request.httpMethod = "POST"
@@ -262,7 +262,7 @@ public class StartFullProcess {
             "userToken" : userToken,
             "appToken" : appToken
         ]
-
+        
         //print(parameters)
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -270,57 +270,61 @@ public class StartFullProcess {
             print("Error serializing parameters: \(error.localizedDescription)")
             return
         }
-
+        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, let response = response as? HTTPURLResponse, error == nil else {
                 print("Error: \(error?.localizedDescription ?? "Unknown error")")
                 return
             }
-
+            
             let status = response.statusCode
             print("Response status code: \(status)")
-
+            
             if status == 200 {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                     //   print("Response saveDataPostApi ---->>> ",json)
+                        //   print("Response saveDataPostApi ---->>> ",json)
                         
-                        
-                        iPassHandler.getDataFromAPI(token: appToken, sessId: random) { (data, error) in
-                            if let error = error {
-                                print("Error: \(error)")
-                                return
-                            }
-                            
-                            if let data = data {
-                                if let dataString = String(data: data, encoding: .utf8) {
-                                    print("getDataFromAPI completed")
-                                    completion(dataString, nil)
-                                    
-                                } else {
-                                    print("Error converting data to string.")
+                        if isForCustom == true {
+                            iPassHandler.getFatchDataFromAPI(token: appToken, sessId: random) { (data, error) in
+                                if let error = error {
+                                    print("Error: \(error)")
+                                    return
                                 }
+                                
+                                if let data = data {
+                                    if let dataString = String(data: data, encoding: .utf8) {
+                                        print("getDataFromAPI completed")
+                                        completion(dataString, nil)
+                                        
+                                    } else {
+                                        print("Error converting data to string.")
+                                    }
+                                }
+                                
                             }
-                            
+                        } else {
+                            iPassHandler.getDataFromAPI(token: appToken, sessId: random) { (data, error) in
+                                if let error = error {
+                                    print("Error: \(error)")
+                                    return
+                                }
+                                
+                                if let data = data {
+                                    if let dataString = String(data: data, encoding: .utf8) {
+                                        print("getDataFromAPI completed")
+                                        completion(dataString, nil)
+                                        
+                                    } else {
+                                        print("Error converting data to string.")
+                                    }
+                                }
+                                
+                            }
                         }
                         
-                        iPassHandler.getFatchDataFromAPI(token: appToken, sessId: random) { (data, error) in
-                            if let error = error {
-                                print("Error: \(error)")
-                                return
-                            }
-                            
-                            if let data = data {
-                                if let dataString = String(data: data, encoding: .utf8) {
-                                    print("getDataFromAPI completed")
-                                    completion(dataString, nil)
-                                    
-                                } else {
-                                    print("Error converting data to string.")
-                                }
-                            }
-                            
-                        }
+                        
+                        
                         
                         
                         
@@ -338,9 +342,8 @@ public class StartFullProcess {
         }
         task.resume()
     }
-
     
-   private static func convertStringToJSON(_ jsonString: String) -> Any? {
+    private static func convertStringToJSON(_ jsonString: String) -> Any? {
         // Convert the string to Data
         guard let jsonData = jsonString.data(using: .utf8) else {
             print("Failed to convert string to data")
@@ -356,14 +359,14 @@ public class StartFullProcess {
             return nil
         }
     }
-
+    
     
     lazy var onlineProcessing: CustomizationItem = {
         let item = CustomizationItem("Online Processing") { [weak self] in
             guard let self = self else { return }
-//            let container = UINavigationController(rootViewController: OnlineProcessingViewController())
-//            container.modalPresentationStyle = .fullScreen
-//            self.present(container, animated: true, completion: nil)
+            //            let container = UINavigationController(rootViewController: OnlineProcessingViewController())
+            //            container.modalPresentationStyle = .fullScreen
+            //            self.present(container, animated: true, completion: nil)
         }
         return item
     }()
@@ -402,7 +405,7 @@ public class StartFullProcess {
             self.showScannerForManualMultipage(controller: UIViewController())
         }
         manualMultipageMode.resetFunctionality = false
-       // manualMultipageMode.actionType = .custom
+        // manualMultipageMode.actionType = .custom
         let customModedSection = CustomizationSection("Custom", [childModeScanner, manualMultipageMode, onlineProcessing])
         sectionsData.append(customModedSection)
         
@@ -540,7 +543,7 @@ public class StartFullProcess {
         
         let customUILayerModeAnimated = CustomizationItem("Custom Status Animated") { [weak self] in
             guard let self = self else { return }
-
+            
         }
         
         let freeCustomStatusItems = [freeCustomTextAndPostion, customUILayerModeStatic, customUILayerButtons, customUILayerModeAnimated]
@@ -596,9 +599,9 @@ public class StartFullProcess {
     
     
     @objc func fireTimer() {
-
+        
     }
-
+    
     
     
     
@@ -607,7 +610,7 @@ public class StartFullProcess {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                 let jsonDict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject]
-//                DocReader.shared.customization.actionDelegate = self
+                //                DocReader.shared.customization.actionDelegate = self
                 DocReader.shared.customization.customUILayerJSON = jsonDict
             } catch {
                 
@@ -667,7 +670,7 @@ public class StartFullProcess {
             }
         }
     }
-
+    
     
     private func recognizeImagesWithImageInput() {
         let whiteImage = UIImage(named: "white.bmp")
@@ -685,7 +688,7 @@ public class StartFullProcess {
             switch action {
             case .cancel:
                 self.stopCustomUIChanges()
-              //  print("Cancelled by user")
+                //  print("Cancelled by user")
             case .complete, .processTimeout:
                 self.stopCustomUIChanges()
                 guard let opticalResults = results else {
@@ -707,7 +710,7 @@ public class StartFullProcess {
             }
         }
     }
-
+    
     
     private func stopCustomUIChanges() {
         DocReader.shared.customization.customUILayerJSON = nil
@@ -722,7 +725,7 @@ public class StartFullProcess {
     
     private func startRFIDReading(presenterClass: UIViewController, opticalResults: DocumentReaderResults?, completion: @escaping ([[String: Any]]?, Error?) -> Void) {
         if ApplicationSetting.shared.useCustomRfidController {
-
+            
         } else {
             DocReader.shared.startRFIDReader(fromPresenter: presenterClass, completion: { [weak self] (action, results, error) in
                 var scannResultData: [[String: Any]] = []
@@ -732,7 +735,7 @@ public class StartFullProcess {
                     guard let results = results else {
                         return
                     }
-                  
+                    
                     for field in results.textResult.fields {
                         let fieldName = field.fieldName
                         let value = field.value
@@ -746,7 +749,7 @@ public class StartFullProcess {
                     guard let results = opticalResults else {
                         return
                     }
-                  
+                    
                     for field in results.textResult.fields {
                         let fieldName = field.fieldName
                         let value = field.value
@@ -768,37 +771,37 @@ public class StartFullProcess {
     
     private func showResultScreen(_ results: DocumentReaderResults) {
         if ApplicationSetting.shared.isDataEncryptionEnabled {
-            StartFullProcess.processEncryptedResults(results) { decryptedResult in
+            iPassSDK.processEncryptedResults(results) { decryptedResult in
                 DispatchQueue.main.async {
                     guard let results = decryptedResult else {
                         print("Can't decrypt result")
                         return
                     }
-                    StartFullProcess.presentResults(results)
+                    iPassSDK.presentResults(results)
                 }
             }
         } else {
-            StartFullProcess.presentResults(results)
+            iPassSDK.presentResults(results)
         }
     }
     
     public static func presentResults(_ results: DocumentReaderResults) {
         var dict = [String:Any]()
         for i in 0 ..< results.textResult.fields.count {
-
+            
             print("Title-=-=",results.textResult.fields[i].fieldName)
             let fileds = results.textResult.fields[i].fieldName
-//            print("Title",results.textResult.fields[i].fieldType)
+            //            print("Title",results.textResult.fields[i].fieldType)
             print("data-=-=",results.textResult.fields[i].value)
             let value = results.textResult.fields[i].value
             dict = [fileds:value]
-//            delegate?.getScanningData(result: dict)
+            //            delegate?.getScanningData(result: dict)
             
-    }
-
         }
+        
+    }
     
-
+    
     
     
     var audioPlayer: AVAudioPlayer?
@@ -812,7 +815,7 @@ public class StartFullProcess {
         let json = encrypted.rawResult
         
         let data = Data(json.utf8)
-
+        
         do {
             if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                 guard let containers = json["ContainerList"] as? [String: Any] else {
@@ -866,7 +869,7 @@ public class StartFullProcess {
                 .flatMap { DocumentReaderResults.initWithRawString($0) }
             completion?(decryptedResult)
         })
-
+        
         task.resume()
     }
     
@@ -879,9 +882,9 @@ public class StartFullProcess {
             let contents = try FileManager.default.contentsOfDirectory(at: masterListURL, includingPropertiesForKeys: [URLResourceKey.nameKey, URLResourceKey.isDirectoryKey], options: .skipsHiddenFiles)
             
             for content in contents {
-//                if let cert = try? Data(contentsOf: content)  {
-//                    certificates.append(PKDCertificate.init(binaryData: cert, resourceType: PKDCertificate.findResourceType(typeName: content.pathExtension), privateKey: nil))
-//                }
+                //                if let cert = try? Data(contentsOf: content)  {
+                //                    certificates.append(PKDCertificate.init(binaryData: cert, resourceType: PKDCertificate.findResourceType(typeName: content.pathExtension), privateKey: nil))
+                //                }
             }
         } catch {
             print(error.localizedDescription)
@@ -890,31 +893,31 @@ public class StartFullProcess {
         return certificates
     }
     
-   
     
-public static func showCameraViewControllerForMrz(controller:UIViewController) {
+    
+    public static func showCameraViewControllerForMrz(controller:UIViewController) {
         let config = DocReader.ScannerConfig()
-       config.scenario = RGL_SCENARIO_FULL_AUTH
+        config.scenario = RGL_SCENARIO_FULL_AUTH
         
         DocReader.shared.showScanner(presenter: controller , config:config) {  (action, result, error) in
-           // guard let self = self else { return }
+            // guard let self = self else { return }
             
             switch action {
             case .cancel:
-              //  self.stopCustomUIChanges()
+                //  self.stopCustomUIChanges()
                 print("Cancelled by user")
             case .complete, .processTimeout:
-              //  self.stopCustomUIChanges()
+                //  self.stopCustomUIChanges()
                 guard let opticalResults = result else {
                     return
                 }
-//                if opticalResults.chipPage != 0 && UserLocalStore.shared.RFIDChipProcessing == true {
-//                    self.startRFIDReading(opticalResults)
-//                } else {
-              // showResultScreen(opticalResults)
-               // }
+                //                if opticalResults.chipPage != 0 && UserLocalStore.shared.RFIDChipProcessing == true {
+                //                    self.startRFIDReading(opticalResults)
+                //                } else {
+                // showResultScreen(opticalResults)
+                // }
             case .error:
-               // self.stopCustomUIChanges()
+                // self.stopCustomUIChanges()
                 print("Error")
                 guard let error = error else { return }
                 print("Error string: \(error)")
@@ -1001,17 +1004,17 @@ extension UIImage {
  
  
  APIHandler.fetchDataliveness(token: datatoken, sessId: UserLocalStore.shared.sessionId) { (data, error) in
-     if let error = error {
-         print("Error: \(error)")
-         return
-     }
-     
-     if let data = data {
-         if let dataString = String(data: data, encoding: .utf8) {
-                     print(dataString)
-                 } else {
-                     print("Error converting data to string.")
-                 }
+ if let error = error {
+ print("Error: \(error)")
+ return
  }
-}
+ 
+ if let data = data {
+ if let dataString = String(data: data, encoding: .utf8) {
+ print(dataString)
+ } else {
+ print("Error converting data to string.")
+ }
+ }
+ }
  */
